@@ -1,0 +1,17 @@
+               :::::::NSLOOKUP:::::
+
+PARA SABER EL IP DE UN EQUIPO EJECUTAMOS EL : nslookup google.com
+=================================================================
+
+
+
+               :::::::NMAP:::::::::
+
+PARA SABER LOS PUERTOS ABIERTOS USANDO NMAP : nmap <IP>
+=======================================================
+
+
+               :::::::NETCAT:::::::
+
+PARA CONECTARNOS CON NETCAT : nc -l <PORT>     EN EL CLIENTE : nc <IP_SERVIDOR> <PORT_CLIENTE>
+===============================================================================================
