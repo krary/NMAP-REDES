@@ -15,3 +15,44 @@ PARA SABER LOS PUERTOS ABIERTOS USANDO NMAP : nmap <IP>
 
 PARA CONECTARNOS CON NETCAT : nc -l <PORT>     EN EL CLIENTE : nc <IP_SERVIDOR> <PORT_CLIENTE>
 ===============================================================================================
+
+
+             
+             
+             
+             
+             :::::::OPENSSH::::::::
+              
+              
+PARA INSTALAR OPENSSH : sudo apt-get install openssh-server
+===========================================================
+
+
+IR A : /etc/ssh_config 
+=======================
+archivo /etc/ssh/sshd_config:
+=============================
+CONFIGURAR LO SIGUIENTE:  Para habilitar OpenSSH en la máquina remota, debe asegurarse de que las siguientes opciones estén configuradas de la siguiente manera en el 
+
+GSSAPIAuthentication yes: Esta opción permite la autenticación mediante GSSAPI (Generic Security Services Application Program Interface).
+
+BatchMode no: Esta opción permite la entrada interactiva del usuario. Si se establece en "yes", SSH no permitirá la entrada interactiva del usuario y solo permitirá la ejecución de comandos.
+
+CheckHostIP yes: Esta opción hace que SSH compruebe si la dirección IP del host remoto coincide con la dirección IP registrada en el archivo ~/.ssh/known_hosts.
+
+StrictHostKeyChecking ask: Esta opción hace que SSH pida al usuario que confirme si desea agregar la clave del host remoto a su archivo known_hosts.
+
+Port 22 (o cualquier otro puerto en el que desee que se ejecute el servidor SSH): Esta opción establece el puerto en el que se escucharán las conexiones entrantes de SSH.
+
+Ciphers aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc: Esta opción especifica los cifrados que se utilizarán para la conexión SSH. Aquí se especifican varios cifrados que se pueden usar.
+
+MACs hmac-md5,hmac-sha1,umac-64@openssh.com: Esta opción especifica los algoritmos de hash que se utilizarán para autenticar la conexión SSH.
+
+HashKnownHosts yes: Esta opción hace que los hosts conocidos se almacenen en un formato de hash.
+
+UserKnownHostsFile ~/.ssh/known_hosts: Esta opción especifica la ruta al archivo known_hosts, que es donde se almacenan los hosts conocidos.
+
+SendEnv LANG LC_*: Esta opción permite enviar variables de entorno al servidor remoto.
+
+En resumen, debe habilitar GSSAPIAuthentication, establecer BatchMode en "no", configurar CheckHostIP y StrictHostKeyChecking, especificar el puerto SSH, establecer los cifrados y algoritmos de hash, hacer hash de los hosts conocidos y especificar la ruta del archivo known_hosts, y permitir el envío de variables de entorno.
+=======================
